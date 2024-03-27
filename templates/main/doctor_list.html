@@ -1,0 +1,38 @@
+
+{% extends 'main/Admin.html' %}
+{% block content %}
+{% for message in messages %}
+<h4  style="color: green;"> {{message}} </h4>
+{% endfor %}
+<table class="table">
+    <h3>Doctor list</h3>
+    <thead>
+      <tr>
+        <th scope="col"> Doctor Name</th>
+        <th scope="col"> Doctor Specialisation</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for doctor in doctors %}
+        <tr style='border:2px black solid'>
+            <td style='border:2px black solid'>
+                {{doctor.Doctor_name}}
+            </td>
+            <td style='border:2px black solid'>
+                {{doctor.Doctor_spacial}}
+            </td>
+            <td style='border:2px black solid'>
+                <form method='POST'>
+                    {% csrf_token %}
+                    <button value='{{doctor.id}}' name='submit' class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+  
+{% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+

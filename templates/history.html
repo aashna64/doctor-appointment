@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for message in messages %}
+<h4  style="color: green;"> {{message}} </h4>
+{% endfor %}
+<br>
+<table class="table">
+    <h3>Consultation History</h3>
+
+    <thead>
+      <tr>
+        <th scope="col">Patiant Name</th>
+        <th scope="col">   Patiant Disease</th>
+        <th scope="col">  Doctor Name</th>
+        <th scope="col">Date</th>
+        <th scope="col">Time</th>
+
+        <th scope="col">Action</th>
+
+      </tr>
+    </thead>
+    <tbody>
+        {% for history in history %}
+
+        <tr style='border:2px black solid'>
+            <td style='border:2px black solid'>
+                {{history.Patiant_name}}
+            </td>
+            <td style='border:2px black solid'>
+                {{history.Patiant_disease}}
+            </td>
+            <td style='border:2px black solid'>
+                {{history.Doctor_name}}
+            </td>
+            <td style='border:2px black solid'>
+                {{history.appointment_date}}
+            </td >
+            <td style='border:2px black solid'>
+                {{history.appoiment_time}}
+            </td>
+            <td style='border:2px black solid'>
+                <form action = "{% url 'delete_history' %}" method='POST'>
+                    {% csrf_token %}
+                    <button value='{{history.id}}' name='submit' class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+    
+    {% endfor %}
+      
+    </tbody>
+  </table>
+
+
+{% endblock %}

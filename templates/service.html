@@ -1,0 +1,116 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description"
+        content="A Web Application for Heart Disease Prediction, Diabetes Prediction and Breast Cancer Prediciton using various Machine Learning Algorithms based on the Kaggle Datasets.">
+    <meta name="keywords" content="Machine Learning, Django">
+    <meta name="author" content="anaz">
+    <title>WEB DOCTOR</title>
+
+    <link rel="shortcut icon" href="{% static 'images/logo.png' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontawsom-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/slider/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/slider/css/owl.theme.default.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <script src="{% static 'plugins/slider/js/owl.carousel.min.js' %}"></script>
+
+</head>
+
+<body
+    style="background-image: url('https://images.pexels.com/photos/4386466/pexels-photo-4386466.jpeg?auto=compress&cs=tinysrgb&w=600'); background-repeat: no-repeat; background-size: cover;">
+    
+        <!-- ################# Header Starts Here#######################-->
+        <header>
+
+            <div class="row header-nav" style="border-radius: 2px; background-color: rgb(16, 16, 16);">
+                <div class="col-md-3 no-padding col-sm-12 nav-img">
+                    <!-- <img style="height: 100px;width: 800px;"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTN9DFtFFPDzkNM4nsSd0A91OAOgC4Ue7OH-JYBcO9HG7Xe8A-nE5vSQRd0r_NzFuiGfrs&usqp=CAU"
+                        alt=""> -->
+                    <a data-toggle="collapse" data-target="#menu" href="#menu"><i
+                            class="fas d-block d-md-none small-menu fa-bars"></i></a>
+                </div>
+                <div id="menu" class="col-md-9 d-none d-md-block nav-item">
+                    <ul>
+                        {% if user.is_authenticated %}
+
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'service' %}">services</a></li>
+
+                        <li><a href="{% url 'history' %}">History</a></li>
+
+                        <li><a href="{% url 'signout' %}">LogOut</a></li>
+                        <li><a href="">{{request.user.first_name}}</a></li>
+                        <!-- <li><a href="{% url 'diabetes' %}">Diabetes</a></li>  -->
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+
+
+
+        </header>
+        {% block content %}
+        {% endblock %}
+   
+
+    <body>
+        <div class="flex text-center">
+            <br>
+            <h2 style="color:#000">Services</h2>
+        </div>
+
+
+
+        <section class="sesion-type">
+            <div class="row">
+                <div class="col-md-4 col-sm-16">
+                    <div class="single-sess">
+                        <img src="{% static 'images/heart.jpg' %}" alt="">
+                        <p><span style="font-size: 25px;">Heart Disease Prediction</span><br>Heart disease, a leading cause of death globally, encompasses conditions like coronary artery disease and heart attacks, often driven by risk factors such as high blood pressure, high cholesterol levels, and smoking. Lifestyle modifications including regular exercise, healthy diet choices, and smoking cessation can significantly reduce the risk of developing heart disease. Additionally, early detection through regular check-ups and screenings plays a crucial role in managing heart health.<br><br>
+                            <a class="btn btn-light button" href="{% url 'heart' %}">Know your Heart Status</a><br><br>
+                        </p>
+
+                    </div>
+                </div>
+              
+                <div class="col-md-4 col-sm-16">
+                    <div class="single-sess">
+                        <img src="{% static 'images/diabetes.png' %}" alt="">
+                        <p><span style="font-size: 25px;">Diabetes Prediction</span><br>Diabetes, a metabolic disorder affecting blood sugar regulation, poses significant health risks including cardiovascular disease, nerve damage, and kidney failure if left untreated.<br> Effective management of diabetes involves maintaining blood sugar levels through medication, diet, exercise, and regular monitoring. Education and support for individuals with diabetes are essential in preventing complications and improving overall quality of life..<br><br>
+                            <a class="btn btn-light button" href="{% url 'diabetes' %}">Know your Diabetes
+                                Status</a><br><br>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-16">
+                    <div class="single-sess">
+                        <img src="{% static 'images/breast.jpg' %}" alt="">
+                        <p><span style="font-size: 25px;">Breast Cancer Prediction</span><br>Breast cancer is one of the
+                            most common cancers among women worldwide,
+                            is influenced by various factors including genetic predisposition, 
+                            hormonal influences, obesity, and alcohol consumption.
+                            Early detection through regular mammograms and breast exams can significantly improve treatment outcomes and survival rates. 
+                            Advances in treatment modalities, including surgery, chemotherapy and radiation therapy offer hope for individuals diagnosed with breast cancer. <br><br>
+                            <a class="btn btn-light button" href="{% url 'breast' %}">Know your Breast Cancer
+                                Status</a><br><br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'plugins/scroll-fixed/jquery-scrolltofixed-min.js' %}"></script>
+    <script src="{% static 'plugins/slider/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+
+</html>

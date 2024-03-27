@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="mt-5 logincontainer" style="width: 400px; margin: 20px auto; border-radius: 26px; background: rgb(15 13 13 / 68%); color: white;">
+    <form method="POST" action="{% url 'login' %}" style="padding: 20px;">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="username" style="color: white;">Username</label>
+            <input type="text" class="form-control" id="username" placeholder="Enter your username" name="uname" required>
+        </div>
+        <div class="form-group">
+            <label for="password" style="color: white;">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Enter your password" name="password" required>
+        </div>
+
+        {% for message in messages %}
+        <h6 style="color: red;"> {{message}} </h6>
+        {% endfor %}
+
+        <button type="submit" class="btn btn-danger btn-block mb-3">Login</button>
+        <p style="color: white;">If you haven't an account, please <a href="{% url 'registration' %}" style="color: #ffcc00;">Register here</a>.</p>
+    </form>
+</div>
+{% endblock %}

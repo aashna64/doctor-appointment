@@ -1,0 +1,53 @@
+{% extends 'main/Admin.html' %}
+{% block content %}
+{% for message in messages %}
+<h4  style="color: green;"> {{message}} </h4>
+{% endfor %}
+<br>
+<table class="table">
+    <h3>Consultation Requests</h3>
+
+    <thead>
+      <tr>
+        <th scope="col">Patiant Name</th>
+        <th scope="col">Patiant Disease</th>
+        <th scope="col">Doctor Name</th>
+        <th scope="col">  Date</th>
+        <th scope="col">  Time</th>
+
+        <th scope="col">  Action</th>
+
+      </tr>
+    </thead>
+    <tbody>
+        {% for request in requests %}
+
+        <tr style='border:2px black solid'>
+            <td style='border:2px black solid'>
+                {{request.Patiant_name}}
+            </td>
+            <td style='border:2px black solid'>
+                {{request.Patiant_disease}}
+            </td>
+            <td style='border:2px black solid'>
+                {{request.Doctor_name}}
+            </td>
+            <td style='border:2px black solid'>
+                {{request.appointment_date}}
+            </td >
+            <td style='border:2px black solid'>
+                {{request.appoiment_time}}
+            </td>
+            <td style='border:2px black solid'>
+                <form action = "{%url 'consultation_delete' %}" method='POST'>
+                    {% csrf_token %}
+                    <button value='{{request.id}}' name='submit' class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+    
+    {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}
